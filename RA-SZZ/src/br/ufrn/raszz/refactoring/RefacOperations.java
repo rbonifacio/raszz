@@ -81,7 +81,7 @@ public abstract class RefacOperations {
 					RefElement refElement = szzDAO.getRefacBicBySummary(refac.getProject(), refac.getSummary());
 					if (refElement != null) interval = matchBefore(refElement);
 				} else {
-					//interval = matchAfter(refac); TODO O que fazer? tentativa abaixo, é garantido?
+					//interval = matchAfter(refac); TODO O que fazer? tentativa abaixo, Ã© garantido?
 					interval = szzDAO.getIntervalEquivBeforeCaller(refac.getRevision(), refac.getSummary(), refac.getAfterpathfile());
 				}
 				break;
@@ -98,7 +98,7 @@ public abstract class RefacOperations {
 		if (refac.getRefactoringtype().equals("EXTRACT_OPERATION") ||
 			refac.getRefactoringtype().equals("EXTRACT_AND_MOVE_OPERATION") ||				
 			refac.getRefactoringtype().equals("INLINE_OPERATION")
-			){ //primeira linha do escopo do método até a última linha do escopo
+			){ //primeira linha do escopo do mï¿½todo atï¿½ a ï¿½ltima linha do escopo
 				interval[0] = refac.getBeforestartline(); //refac.getBeforestarscope();
 				interval[1] = refac.getBeforeendline()>0?refac.getBeforeendline():refac.getBeforestartline();
 			}
@@ -109,7 +109,7 @@ public abstract class RefacOperations {
 			refac.getRefactoringtype().equals("PULL_UP_OPERATION") ||
 			refac.getRefactoringtype().equals("PUSH_DOWN_ATTRIBUTE") ||
 			refac.getRefactoringtype().equals("PUSH_DOWN_OPERATION")
-		){ //primeira linha do javadoc até o final ou início do escopo
+		){ //primeira linha do javadoc atï¿½ o final ou inï¿½cio do escopo
 			interval[0] = refac.getBeforestartline();
 			interval[1] = (refac.getBeforeendline() >0)? 
 						refac.getBeforeendline(): (refac.getBeforestarscope()>1?refac.getBeforestarscope():refac.getBeforestartline());
@@ -118,7 +118,7 @@ public abstract class RefacOperations {
 			refac.getRefactoringtype().equals("RENAME_METHOD") /*||
 			refac.getRefactoringtype().equals("RENAME_CLASS") ||
 			refac.getRefactoringtype().equals("MOVE_RENAME_CLASS")*/
-		){ //a linha exata onde inicial o atributo, método ou classe movida/renomeada
+		){ //a linha exata onde inicial o atributo, mï¿½todo ou classe movida/renomeada
 			interval[0] = refac.getBeforestartline(); //refac.getBeforestarscope();
 			interval[1] = (refac.getBeforestarscope() >1)? 
 					refac.getBeforestarscope(): refac.getBeforeendline();
@@ -139,7 +139,7 @@ public abstract class RefacOperations {
 		long[] interval = new long[2];
 		if (refac.getRefactoringtype().equals("EXTRACT_OPERATION") ||
 				refac.getRefactoringtype().equals("INLINE_OPERATION")
-			){ //primeira linha do escopo do método até a última linha do escopo
+			){ //primeira linha do escopo do mï¿½todo atï¿½ a ï¿½ltima linha do escopo
 				interval[0] = refac.getAfterstartline(); //refac.getBeforestarscope();
 				interval[1] = refac.getAfterendline();
 			}
@@ -150,7 +150,7 @@ public abstract class RefacOperations {
 			refac.getRefactoringtype().equals("PULL_UP_OPERATION") ||
 			refac.getRefactoringtype().equals("PUSH_DOWN_ATTRIBUTE") ||
 			refac.getRefactoringtype().equals("PUSH_DOWN_OPERATION")
-		){ //primeira linha do javadoc até o final ou início do escopo
+		){ //primeira linha do javadoc atï¿½ o final ou inï¿½cio do escopo
 			interval[0] = refac.getAfterstartline();
 			interval[1] = (refac.getAfterendline() >0)? 
 						refac.getAfterendline(): refac.getAfterstartscope();
@@ -159,7 +159,7 @@ public abstract class RefacOperations {
 			refac.getRefactoringtype().equals("RENAME_METHOD") /*||
 			refac.getRefactoringtype().equals("RENAME_CLASS") ||
 			refac.getRefactoringtype().equals("MOVE_RENAME_CLASS")*/
-		){ //a linha exata onde inicial o atributo, método ou classe movida/renomeada
+		){ //a linha exata onde inicial o atributo, mï¿½todo ou classe movida/renomeada
 			interval[0] = refac.getAfterstartline(); //refac.getAfterstartscope();
 			interval[1] = (refac.getAfterstartscope() >0)? 
 					refac.getAfterstartscope(): refac.getAfterendline();
