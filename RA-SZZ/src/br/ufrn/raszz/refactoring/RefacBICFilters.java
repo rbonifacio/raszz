@@ -118,7 +118,7 @@ public class RefacBICFilters {
 			    		 && r.getRevision().equals(rev)
 			    		 && r.getAfterpathfile().equals(path)
 			    		 && ((!r.getElementtype().equals("CALLER") && (number+adjindex) >= r.getAfterstartline() && number <= r.getAfterendline()) 
-			    		 /*|| (r.getElementtype().equals("CALLER") && r.getAfterstartscope() == number)*/) //pode trazer chamada a linhas que nao foram alteradas, nesse caso só interessa as linhas removidas para colocar no método criado
+			    		 /*|| (r.getElementtype().equals("CALLER") && r.getAfterstartscope() == number)*/) //pode trazer chamada a linhas que nao foram alteradas, nesse caso sÃ³ interessa as linhas removidas para colocar no mÃ©todo criado
 			    		)
 			     .collect(Collectors.toList());
 	}
