@@ -194,12 +194,12 @@ public class TraceBackRaSZZ extends AnnotationGraphService {
 				log.debug("DEBUG POINT IN: " + prevrev.getRevision());
 						
 			//REFACTORING IN FIX-INDUNCING CHANGES 				
-			//verifica se a refatoração nao ta salva
+			//verifica se a refatoracao nao ta salva
 			if (indexPosRefac >= 0) {
 				String commitId = linetotrace.getPreviousRevision();
 				RefacOperations.checkRefactoringStored(repository, commitId, project, refacTool, refacRevProcSet, refacSet);
 			}			
-			//verifica se contém refatoração no arquivo/revisao analisado
+			//verifica se contem refatoracao no arquivo/revisao analisado
 			List<RefElement> currentRefacSet = RefacOperations.filterRefacSet(refacSet, linetotrace.getPreviousPath(), linetotrace.getPreviousRevision(), linetotrace.getPreviousNumber(), linetotrace.getAdjustmentIndex(), content); 
 			if (currentRefacSet != null && currentRefacSet.size() != 0) {
 				String prevrefpath = RefacOperations.prevRefacPath(refacSet, linetotrace.getPreviousPath(), linetotrace.getPreviousRevision(), linetotrace.getPreviousNumber(), linetotrace.getAdjustmentIndex(), content);
@@ -324,7 +324,7 @@ public class TraceBackRaSZZ extends AnnotationGraphService {
 			}
 		} else {
 			//IF mudou de local o arquivo?	
-			//verifica se a refatoração nao ta salva
+			//verifica se a refatoraï¿½ï¿½o nao ta salva
 			if (indexPosRefac >= 0) {
 				String commitId = linetotrace.getPreviousRevision();
 				RefacOperations.checkRefactoringStored(repository, commitId, project, refacTool, refacRevProcSet, refacSet);

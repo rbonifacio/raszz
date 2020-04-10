@@ -228,7 +228,7 @@ public class SzzDAOImpl extends SzzDAO {
 							   	"AND REF.type = 'before' " +
 							   	//"AND revisiontype like 'fix%' " +
 							   	"AND :path = REF.callerpath " +
-							   	//"AND REF.tool = 'refdiff' " +		//por enquanto só refdiff
+							   	//"AND REF.tool = 'refdiff' " +		//por enquanto so refdiff
 							   	"AND :linenumber = REF.callerline)";
 		SQLQuery query = currentSession.createSQLQuery(sql);
 		query.setParameter("path", path);
