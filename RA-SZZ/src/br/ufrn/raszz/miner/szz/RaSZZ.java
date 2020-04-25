@@ -49,6 +49,10 @@ public class RaSZZ extends Miner {
 			 * loop because the projects are specified in a comma
 			 * separated way */
 			for(int i=0; i < projects.length; i++){
+				System.out.println("Projects running:");
+				System.out.println("[" + projects[i] + "]");
+			}
+			for(int i=0; i < projects.length; i++){
 				beforeInit(szz, useProjectProperties, projects[i], repoType, szzType, gitUrls, svnUrls, i);
 			}
 		} else { 
@@ -65,17 +69,18 @@ public class RaSZZ extends Miner {
 	public static void beforeInit(RaSZZ szz, Boolean useProjectProperties, String project, RepositoryType repoType, 
 			SZZImplementationType szzType, String[] gitUrls, String[] svnUrls, int index) throws Exception {
 				String remoteUrl = null;
-				if(!useProjectProperties){
-					switch(repoType){
-						case GIT: remoteUrl = gitUrls[index];
-							  break;
-						case SVN: remoteUrl = svnUrls[index];
-							  break;
-					}
-				} else {
-					project = c.readLine("ok you don't want me to use the backhoe.properties, so which project should I work on?");
-					remoteUrl = szz.getProperty(project.toUpperCase(),"/projects.properties");
-				}
+//				if(!useProjectProperties){
+//					switch(repoType){
+//						case GIT: remoteUrl = gitUrls[index];
+//							  break;
+//						case SVN: remoteUrl = svnUrls[index];
+//							  break;
+//					}
+//				} else {
+//					project = c.readLine("ok you don't want me to use the backhoe.properties, so which project should I work on?");
+//					remoteUrl = szz.getProperty(project.toUpperCase(),"/projects.properties");
+//				}
+				remoteUrl = szz.getProperty(project.toUpperCase(),"/projects.properties");
 				log.info("and remoteUrl: " + remoteUrl);
 				log.info("running SZZ for project: " + project);
 				szz.init(project, remoteUrl, repoType, szzType, false, null);
