@@ -43,13 +43,14 @@ def persist_bugfixes()
             file = File.read(folder + "/" + key)
             data = JSON.parse(file)
             size = data.size()
+            nameProject=key.partition("_").first
             data.each do |key, value|
                 issuecode = key
                 revisionnumber = value["hash"]
                 commitdate = value["resolutiondate"]
                 issuetype = 'Bug'
-                p "inserting issuecode: #{issuecode}, revisionnumber: #{revisionnumber}, commitdate: #{commitdate}, issuetype: #{issuetype}, project_name: #{key.partition("_").first}"
-                query = "insert into linkedissuessvn (projectname, issuecode, revisionnumber, commitdate, issuetype) values ('#{key.partition("_").first}', '#{issuecode}', '#{revisionnumber}', '#{commitdate}', '#{issuetype}');"
+                p "inserting issuecode: #{issuecode}, revisionnumber: #{revisionnumber}, commitdate: #{commitdate}, issuetype: #{issuetype}, project_name: #{nameProject}"
+                query = "insert into linkedissuessvn (projectname, issuecode, revisionnumber, commitdate, issuetype) values ('#{nameProject}', '#{issuecode}', '#{revisionnumber}', '#{commitdate}', '#{issuetype}');"
                 con.exec query
                 count += 1
                 p "inserted #{count} of #{size}"
