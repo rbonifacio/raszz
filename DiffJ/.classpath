@@ -9,6 +9,6 @@
 	<classpathentry kind="lib" path="libs/pmd-4.2.5.jar"/>
 	<classpathentry kind="lib" path="libs/pmdx-2.0.0.jar"/>
 	<classpathentry kind="lib" path="libs/qualog-2.0.0.jar"/>
-	<classpathentry kind="lib" path="libs/junit-4.11.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
